@@ -1,0 +1,70 @@
+.qubo-logo {
+  --size: 50rem;
+  --gap: 1rem;
+
+  // https://www.calculator.net/triangle-calculator.html
+  --top-scale: 0.57735;
+  --gap-scale: 0.86603;
+  --side-scale: 1.1547;
+
+  .top {
+    width: var(--size);
+    height: var(--size);
+
+    margin-block-start: calc((var(--top-scale) - 1) * var(--size));
+    margin-block-end: calc(var(--gap-scale) * var(--gap));
+    margin-inline: auto;
+
+    background: magenta;
+    background-position: 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+    transform: scaleY(var(--top-scale));
+    transform-origin: bottom;
+
+    &.bg-pride {
+      background-image: url(../assets/pride-flag.svg);
+    }
+
+    &.bg-progress-1 {
+      background-image: url(../assets/progress-flag-1.svg);
+    }
+
+    &.bg-progress-2 {
+      background-image: url(../assets/progress-flag-2.svg);
+    }
+  }
+
+  .sides {
+    font-size: 15rem;
+    font-weight: bold;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    gap: var(--gap);
+
+    * {
+      width: calc(var(--size) / 2);
+      height: calc(var(--side-scale) * var(--size) / 2);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left {
+      background: var(--azul-caixa);
+      transform: skewY(30deg);
+      transform-origin: bottom right;
+    }
+
+    .right {
+      background: var(--laranja-caixa);
+      transform: skewY(-30deg);
+      transform-origin: bottom left;
+    }
+  }
+}
