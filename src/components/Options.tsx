@@ -6,9 +6,11 @@ export function Options(props: {
   flag: FlagStyle
   sides: SideStyle
   gap: number
+  background: BgColor
   onChangeFlag: (flag: FlagStyle) => void
   onChangeSides: (sides: SideStyle) => void
   onChangeGap: (gap: number) => void
+  onChangeBackground: (background: BgColor) => void
 }) {
   const handleChangeFlag = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -29,6 +31,13 @@ export function Options(props: {
       props.onChangeGap(+event.target.value)
     },
     [props.onChangeGap],
+  )
+
+  const handleChangeBackground = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      props.onChangeBackground(event.target.value as BgColor)
+    },
+    [props.onChangeBackground],
   )
 
   return (
@@ -71,6 +80,20 @@ export function Options(props: {
         >
           <option value='0'>Não</option>
           <option value='1'>Sim</option>
+        </select>
+      </div>
+
+      <div className='field'>
+        <label htmlFor='background-select'>Fundo</label>
+        <select
+          name='background'
+          id='background-select'
+          value={props.background}
+          onChange={handleChangeBackground}
+        >
+          <option value='black'>Preto</option>
+          <option value='blue'>Azul</option>
+          <option value='white'>Branco</option>
         </select>
       </div>
     </section>

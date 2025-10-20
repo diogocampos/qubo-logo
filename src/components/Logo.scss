@@ -105,4 +105,16 @@
       display: none;
     }
   }
+
+  &.bg-black {
+    background: black;
+  }
+
+  &.bg-blue {
+    background: var(--azul-caixa);
+  }
+
+  &.bg-white {
+    background: white;
+  }
 }

@@ -4,13 +4,14 @@ export function Logo(props: {
   flag: FlagStyle
   sides: SideStyle
   gap: number
+  background: BgColor
 }) {
   const style = {
     '--gap': `${props.gap}rem`,
   } as React.CSSProperties
 
   return (
-    <section className='qubo-logo' style={style}>
+    <section className={`qubo-logo bg-${props.background}`} style={style}>
       <div className={`top bg-${props.flag}`} />
 
       <div className={`sides ${props.sides}`}>
