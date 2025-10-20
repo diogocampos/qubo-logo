@@ -1,20 +1,25 @@
 import './Logo.scss'
 
-export function Logo(props: { flag: Flag; gap: number }) {
+export function Logo(props: {
+  flag: FlagStyle
+  sides: SideStyle
+  gap: number
+}) {
+  const style = {
+    '--gap': `${props.gap}rem`,
+  } as React.CSSProperties
+
   return (
-    <section
-      className='qubo-logo'
-      style={{ '--gap': `${props.gap}rem` } as React.CSSProperties}
-    >
+    <section className='qubo-logo' style={style}>
       <div className={`top bg-${props.flag}`} />
 
-      <div className='sides'>
+      <div className={`sides ${props.sides}`}>
         <div className='left'>
-          <span>QU</span>
+          <span className='text'>QU</span>
         </div>
 
         <div className='right'>
-          <span>BO</span>
+          <span className='text'>BO</span>
         </div>
       </div>
     </section>
