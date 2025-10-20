@@ -3,12 +3,19 @@ html { box-sizing: border-box; }
 // prettier-ignore
 *, *:before, *:after { box-sizing: inherit; }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
   font-family: 'CAIXA Std', sans-serif;
+  font-size: 1.6rem;
 }
 
 :root {

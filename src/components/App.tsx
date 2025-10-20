@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Logo } from './Logo'
+import { Options } from './Options'
 
 export function App() {
   const [flag, setFlag] = useState<FlagStyle>('progress-2')
@@ -10,6 +11,14 @@ export function App() {
   return (
     <>
       <Logo flag={flag} sides={sides} gap={gap} />
+      <Options
+        flag={flag}
+        sides={sides}
+        gap={gap}
+        onChangeFlag={setFlag}
+        onChangeSides={setSides}
+        onChangeGap={setGap}
+      />
     </>
   )
 }
