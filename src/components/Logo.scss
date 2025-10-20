@@ -118,3 +118,9 @@
     background: white;
   }
 }
+
+@media (min-width: 520px) and (min-height: 600px) {
+  .qubo-logo {
+    --size: 50rem;
+  }
+}
