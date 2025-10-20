@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'CAIXA Std', sans-serif;
 }
 
 :root {
@@ -16,4 +16,9 @@ body {
   --cinza-caixa: rgb(208, 224, 227);
   --laranja-caixa: rgb(243, 146, 0);
   --turquesa-caixa: rgb(84, 187, 171);
+}
+
+@font-face {
+  font-family: 'CAIXA Std';
+  src: url('./assets/CAIXAStdVariable.woff2') format('woff2-variations');
 }
