@@ -3,20 +3,29 @@ import { ChangeEvent, useCallback } from 'react'
 import './Options.scss'
 
 export function Options(props: {
-  flag: FlagStyle
+  flagDesign: FlagDesign
+  flagAngle: FlagAngle
   sides: SideStyle
   gap: number
   background: BgColor
-  onChangeFlag: (flag: FlagStyle) => void
+  onChangeFlagDesign: (flag: FlagDesign) => void
+  onChangeFlagAngle: (flag: FlagAngle) => void
   onChangeSides: (sides: SideStyle) => void
   onChangeGap: (gap: number) => void
   onChangeBackground: (background: BgColor) => void
 }) {
-  const handleChangeFlag = useCallback(
+  const handleChangeFlagDesign = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeFlag(event.target.value as FlagStyle)
+      props.onChangeFlagDesign(event.target.value as FlagDesign)
     },
-    [props.onChangeFlag],
+    [props.onChangeFlagDesign],
+  )
+
+  const handleChangeFlagAngle = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      props.onChangeFlagAngle(event.target.value as FlagAngle)
+    },
+    [props.onChangeFlagAngle],
   )
 
   const handleChangeSides = useCallback(
@@ -43,16 +52,29 @@ export function Options(props: {
   return (
     <section className='options'>
       <div className='field'>
-        <label htmlFor='flag-select'>Bandeira</label>
+        <label htmlFor='flag-design-select'>Bandeira</label>
         <select
-          name='flag'
-          id='flag-select'
-          value={props.flag}
-          onChange={handleChangeFlag}
+          name='flag-design'
+          id='flag-design-select'
+          value={props.flagDesign}
+          onChange={handleChangeFlagDesign}
         >
           <option value='pride'>Original</option>
           <option value='progress-1'>Progresso 1</option>
           <option value='progress-2'>Progresso 2</option>
+        </select>
+      </div>
+
+      <div className='field'>
+        <label htmlFor='flag-angle-select'>Ângulo</label>
+        <select
+          name='flag-angle'
+          id='flag-angle-select'
+          value={props.flagAngle}
+          onChange={handleChangeFlagAngle}
+        >
+          <option value='horizontal'>Horizontal</option>
+          <option value='diagonal'>Diagonal</option>
         </select>
       </div>
 

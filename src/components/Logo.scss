@@ -22,21 +22,29 @@
     background-position: 25%;
     background-repeat: no-repeat;
     background-size: cover;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 
-    transform: scaleY(var(--top-scale));
-    transform-origin: bottom;
-
-    &.bg-pride {
+    &.flag-pride {
       background-image: url(../assets/flag-pride.svg);
     }
 
-    &.bg-progress-1 {
+    &.flag-progress-1 {
       background-image: url(../assets/flag-progress-1.svg);
     }
 
-    &.bg-progress-2 {
+    &.flag-progress-2 {
       background-image: url(../assets/flag-progress-2.svg);
+    }
+
+    &.angle-horizontal {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      transform: scaleY(var(--top-scale));
+      transform-origin: bottom;
+    }
+
+    &.angle-diagonal {
+      margin-inline-start: var(--size);
+      transform: scale(0.707106781, 0.4082481) rotate(-45deg);
+      transform-origin: bottom left;
     }
   }
 

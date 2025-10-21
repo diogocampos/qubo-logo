@@ -1,18 +1,29 @@
+import { useMemo } from 'react'
+
 import './Logo.scss'
 
 export function Logo(props: {
-  flag: FlagStyle
+  flagDesign: FlagDesign
+  flagAngle: FlagAngle
   sides: SideStyle
   gap: number
   background: BgColor
 }) {
-  const style = {
-    '--gap': `${props.gap}rem`,
-  } as React.CSSProperties
+  const style = useMemo(
+    () => ({
+      '--gap': `${props.gap}rem`,
+    }),
+    [props.gap],
+  )
 
   return (
-    <section className={`qubo-logo bg-${props.background}`} style={style}>
-      <div className={`top bg-${props.flag}`} />
+    <section
+      className={`qubo-logo bg-${props.background}`}
+      style={style as React.CSSProperties}
+    >
+      <div
+        className={`top flag-${props.flagDesign} angle-${props.flagAngle}`}
+      />
 
       <div className={`sides ${props.sides}`}>
         <div className='left'>
