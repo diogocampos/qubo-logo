@@ -2,122 +2,124 @@ import { ChangeEvent, useCallback } from 'react'
 
 import './Options.scss'
 
+type OptionList<T extends string> = { value: T; label: string }[]
+
+const BG_COLORS: OptionList<BgColor> = [
+  { value: 'black', label: 'Preto' },
+  { value: 'blue', label: 'Azul' },
+  { value: 'white', label: 'Branco' },
+]
+
+const FLAG_ANGLES: OptionList<FlagAngle> = [
+  { value: 'horizontal', label: 'Horizontal' },
+  { value: 'diagonal', label: 'Diagonal' },
+]
+
+const FLAG_DESIGNS: OptionList<FlagDesign> = [
+  { value: 'pride', label: 'Original' },
+  { value: 'progress-1', label: 'Progresso 1' },
+  { value: 'progress-2', label: 'Progresso 2' },
+]
+
+const GAP_SIZES: OptionList<GapSize> = [
+  { value: '0', label: 'Não' },
+  { value: '1', label: 'Sim' },
+]
+
+const SIDE_STYLES: OptionList<SideStyle> = [
+  { value: 'stripes', label: 'Listras' },
+  { value: 'solid-bg', label: 'Fundo sólido' },
+  { value: 'no-text', label: 'Sem texto' },
+]
+
 export function Options(props: {
-  flagDesign: FlagDesign
-  flagAngle: FlagAngle
+  flag: FlagDesign
+  angle: FlagAngle
   sides: SideStyle
-  gap: number
+  gap: GapSize
   background: BgColor
-  onChangeFlagDesign: (flag: FlagDesign) => void
-  onChangeFlagAngle: (flag: FlagAngle) => void
-  onChangeSides: (sides: SideStyle) => void
-  onChangeGap: (gap: number) => void
-  onChangeBackground: (background: BgColor) => void
+  onChangeFlag(flag: FlagDesign): void
+  onChangeAngle(angle: FlagAngle): void
+  onChangeSides(sides: SideStyle): void
+  onChangeGap(gap: GapSize): void
+  onChangeBackground(background: BgColor): void
 }) {
-  const handleChangeFlagDesign = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeFlagDesign(event.target.value as FlagDesign)
-    },
-    [props.onChangeFlagDesign],
-  )
+  return (
+    <section className='options'>
+      <Select
+        name='flag-design'
+        label='Bandeira'
+        options={FLAG_DESIGNS}
+        value={props.flag}
+        onChange={props.onChangeFlag}
+      />
 
-  const handleChangeFlagAngle = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeFlagAngle(event.target.value as FlagAngle)
-    },
-    [props.onChangeFlagAngle],
-  )
+      <Select
+        name='flag-angle'
+        label='Ângulo'
+        options={FLAG_ANGLES}
+        value={props.angle}
+        onChange={props.onChangeAngle}
+      />
 
-  const handleChangeSides = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeSides(event.target.value as SideStyle)
-    },
-    [props.onChangeSides],
-  )
+      <Select
+        name='sides'
+        label='Laterais'
+        options={SIDE_STYLES}
+        value={props.sides}
+        onChange={props.onChangeSides}
+      />
 
-  const handleChangeGap = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeGap(+event.target.value)
-    },
-    [props.onChangeGap],
-  )
+      <Select
+        name='gap'
+        label='Espaçamento'
+        options={GAP_SIZES}
+        value={props.gap}
+        onChange={props.onChangeGap}
+      />
 
-  const handleChangeBackground = useCallback(
+      <Select
+        name='background'
+        label='Fundo'
+        options={BG_COLORS}
+        value={props.background}
+        onChange={props.onChangeBackground}
+      />
+    </section>
+  )
+}
+
+function Select<T extends string>(props: {
+  name: string
+  label: string
+  options: readonly { value: T; label: string }[]
+  value: T
+  onChange(newValue: T): void
+}) {
+  const selectId = `select-${props.name}`
+
+  const handleChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
-      props.onChangeBackground(event.target.value as BgColor)
+      props.onChange(event.target.value as T)
     },
-    [props.onChangeBackground],
+    [props.onChange],
   )
 
   return (
-    <section className='options'>
-      <div className='field'>
-        <label htmlFor='flag-design-select'>Bandeira</label>
-        <select
-          name='flag-design'
-          id='flag-design-select'
-          value={props.flagDesign}
-          onChange={handleChangeFlagDesign}
-        >
-          <option value='pride'>Original</option>
-          <option value='progress-1'>Progresso 1</option>
-          <option value='progress-2'>Progresso 2</option>
-        </select>
-      </div>
-
-      <div className='field'>
-        <label htmlFor='flag-angle-select'>Ângulo</label>
-        <select
-          name='flag-angle'
-          id='flag-angle-select'
-          value={props.flagAngle}
-          onChange={handleChangeFlagAngle}
-        >
-          <option value='horizontal'>Horizontal</option>
-          <option value='diagonal'>Diagonal</option>
-        </select>
-      </div>
-
-      <div className='field'>
-        <label htmlFor='sides-select'>Laterais</label>
-        <select
-          name='sides'
-          id='sides-select'
-          value={props.sides}
-          onChange={handleChangeSides}
-        >
-          <option value='stripes'>Listras</option>
-          <option value='solid-bg'>Fundo sólido</option>
-          <option value='no-text'>Sem texto</option>
-        </select>
-      </div>
-
-      <div className='field'>
-        <label htmlFor='gap-select'>Espaçamento</label>
-        <select
-          name='gap'
-          id='gap-select'
-          value={props.gap}
-          onChange={handleChangeGap}
-        >
-          <option value='0'>Não</option>
-          <option value='1'>Sim</option>
-        </select>
-      </div>
-
-      <div className='field'>
-        <label htmlFor='background-select'>Fundo</label>
-        <select
-          name='background'
-          id='background-select'
-          value={props.background}
-          onChange={handleChangeBackground}
-        >
-          <option value='black'>Preto</option>
-          <option value='blue'>Azul</option>
-          <option value='white'>Branco</option>
-        </select>
-      </div>
-    </section>
+    <div className='field'>
+      <label htmlFor={selectId}>{props.label}</label>
+      <select
+        id={selectId}
+        name={props.name}
+        value={props.value}
+        onChange={handleChange}
+      >
+        {props.options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
   )
 }

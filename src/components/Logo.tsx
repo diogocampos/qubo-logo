@@ -3,10 +3,10 @@ import { useMemo } from 'react'
 import './Logo.scss'
 
 export function Logo(props: {
-  flagDesign: FlagDesign
-  flagAngle: FlagAngle
+  flag: FlagDesign
+  angle: FlagAngle
   sides: SideStyle
-  gap: number
+  gap: GapSize
   background: BgColor
 }) {
   const style = useMemo(
@@ -21,9 +21,7 @@ export function Logo(props: {
       className={`qubo-logo bg-${props.background}`}
       style={style as React.CSSProperties}
     >
-      <div
-        className={`top flag-${props.flagDesign} angle-${props.flagAngle}`}
-      />
+      <div className={`top flag-${props.flag} angle-${props.angle}`} />
 
       <div className={`sides ${props.sides}`}>
         <div className='left'>
