@@ -18,7 +18,7 @@ export function Logo(props: {
 
   return (
     <section
-      className={`qubo-logo bg-${props.background}`}
+      className={`logo bg-${props.background}`}
       style={style as React.CSSProperties}
     >
       <div className={`top flag-${props.flag} angle-${props.angle}`} />

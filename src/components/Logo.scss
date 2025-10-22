@@ -1,4 +1,4 @@
-.qubo-logo {
+.logo {
   --size: 30rem;
   --gap: 1rem;
 
@@ -19,7 +19,7 @@
     margin-block-start: calc((var(--top-scale) - 1) * var(--size));
     margin-block-end: calc(var(--gap-scale) * var(--gap));
 
-    background-position: 25%;
+    background-position: 21.685%;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -128,7 +128,7 @@
 }
 
 @media (min-width: 520px) and (min-height: 600px) {
-  .qubo-logo {
+  .logo {
     --size: 50rem;
   }
 }

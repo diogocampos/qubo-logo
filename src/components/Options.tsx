@@ -47,7 +47,7 @@ export function Options(props: {
   return (
     <section className='options'>
       <Select
-        name='flag-design'
+        name='flag'
         label='Bandeira'
         options={FLAG_DESIGNS}
         value={props.flag}
@@ -55,7 +55,7 @@ export function Options(props: {
       />
 
       <Select
-        name='flag-angle'
+        name='angle'
         label='Ângulo'
         options={FLAG_ANGLES}
         value={props.angle}
