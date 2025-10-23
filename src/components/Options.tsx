@@ -34,17 +34,24 @@ const BG_COLORS: OptionList<BgColor> = [
   { value: 'black', label: 'Preto' },
 ]
 
+const COLOR_FILTERS: OptionList<ColorFilter> = [
+  { value: 'none', label: 'Normal' },
+  { value: 'grayscale', label: 'Tons de cinza' },
+]
+
 export function Options(props: {
   flag: FlagDesign
   angle: FlagAngle
   sides: SideStyle
   gap: GapSize
   background: BgColor
+  filter: ColorFilter
   onChangeFlag(flag: FlagDesign): void
   onChangeAngle(angle: FlagAngle): void
   onChangeSides(sides: SideStyle): void
   onChangeGap(gap: GapSize): void
   onChangeBackground(background: BgColor): void
+  onChangeFilter(filter: ColorFilter): void
 }) {
   return (
     <section className='options'>
@@ -86,6 +93,14 @@ export function Options(props: {
         options={BG_COLORS}
         value={props.background}
         onChange={props.onChangeBackground}
+      />
+
+      <Select
+        name='filter'
+        label='Filtro'
+        options={COLOR_FILTERS}
+        value={props.filter}
+        onChange={props.onChangeFilter}
       />
     </section>
   )

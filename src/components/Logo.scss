@@ -151,6 +151,10 @@
   &.bg-white {
     background: white;
   }
+
+  &.filter-grayscale {
+    filter: grayscale(1);
+  }
 }
 
 @media (min-width: 520px) and (min-height: 600px) {

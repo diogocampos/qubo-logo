@@ -8,6 +8,7 @@ export function Logo(props: {
   sides: SideStyle
   gap: GapSize
   background: BgColor
+  filter: ColorFilter
 }) {
   const style = useMemo(
     () => ({
@@ -18,7 +19,7 @@ export function Logo(props: {
 
   return (
     <section
-      className={`logo bg-${props.background}`}
+      className={`logo bg-${props.background} filter-${props.filter}`}
       style={style as React.CSSProperties}
     >
       <div className={`top flag-${props.flag} angle-${props.angle}`} />

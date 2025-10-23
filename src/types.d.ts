@@ -1,5 +1,7 @@
 type BgColor = 'black' | 'blue' | 'white'
 
+type ColorFilter = 'none' | 'grayscale'
+
 type FlagAngle = 'horizontal' | 'diagonal'
 
 type FlagDesign = 'pride' | 'progress-1' | 'progress-2'
