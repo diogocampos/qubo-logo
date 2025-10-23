@@ -2,30 +2,24 @@ import { useMemo } from 'react'
 
 import './Logo.scss'
 
-export function Logo(props: {
-  flag: FlagDesign
-  angle: FlagAngle
-  sides: SideStyle
-  font: FontFamily
-  gap: GapSize
-  background: BgColor
-  filter: ColorFilter
-}) {
+export function Logo(props: { state: LogoState }) {
+  const { state } = props
+
   const style = useMemo(
     () => ({
-      '--gap': `${props.gap}rem`,
+      '--gap': `${state.gap}rem`,
     }),
-    [props.gap],
+    [state.gap],
   )
 
   return (
     <section
-      className={`logo bg-${props.background} filter-${props.filter}`}
+      className={`logo bg-${state.background} filter-${state.filter}`}
       style={style as React.CSSProperties}
     >
-      <div className={`top flag-${props.flag} angle-${props.angle}`} />
+      <div className={`top flag-${state.flag} angle-${state.angle}`} />
 
-      <div className={`sides ${props.sides} ff-${props.font}`}>
+      <div className={`sides ${state.sides} ff-${state.font}`}>
         <div className='left'>
           <span className='text'>QU</span>
         </div>

@@ -2,7 +2,10 @@ import { ChangeEvent, useCallback } from 'react'
 
 import './Options.scss'
 
-type OptionList<T extends string> = { value: T; label: string }[]
+type OptionList<T extends string> = readonly {
+  readonly value: T
+  readonly label: string
+}[]
 
 const FLAG_DESIGNS: OptionList<FlagDesign> = [
   { value: 'pride', label: 'Original' },
@@ -45,77 +48,70 @@ const COLOR_FILTERS: OptionList<ColorFilter> = [
 ]
 
 export function Options(props: {
-  flag: FlagDesign
-  angle: FlagAngle
-  sides: SideStyle
-  font: FontFamily
-  gap: GapSize
-  background: BgColor
-  filter: ColorFilter
-  onChangeFlag(flag: FlagDesign): void
-  onChangeAngle(angle: FlagAngle): void
-  onChangeSides(sides: SideStyle): void
-  onChangeFont(font: FontFamily): void
-  onChangeGap(gap: GapSize): void
-  onChangeBackground(background: BgColor): void
-  onChangeFilter(filter: ColorFilter): void
+  state: LogoState
+  onChange(changed: Partial<LogoState>): void
 }) {
+  const { state, onChange } = props
+
   return (
     <section className='options'>
       <Select
         name='flag'
         label='Bandeira'
         options={FLAG_DESIGNS}
-        value={props.flag}
-        onChange={props.onChangeFlag}
+        value={state.flag}
+        onChange={useCallback((flag) => onChange({ flag }), [onChange])}
       />
 
       <Select
         name='angle'
         label='Ângulo'
         options={FLAG_ANGLES}
-        value={props.angle}
-        onChange={props.onChangeAngle}
+        value={state.angle}
+        onChange={useCallback((angle) => onChange({ angle }), [onChange])}
       />
 
       <Select
         name='sides'
         label='Laterais'
         options={SIDE_STYLES}
-        value={props.sides}
-        onChange={props.onChangeSides}
+        value={state.sides}
+        onChange={useCallback((sides) => onChange({ sides }), [onChange])}
       />
 
       <Select
         name='font'
         label='Fonte'
         options={FONT_FAMILIES}
-        value={props.font}
-        onChange={props.onChangeFont}
+        value={state.font}
+        onChange={useCallback((font) => onChange({ font }), [onChange])}
       />
 
       <Select
         name='gap'
         label='Espaçamento'
         options={GAP_SIZES}
-        value={props.gap}
-        onChange={props.onChangeGap}
+        value={state.gap}
+        onChange={useCallback((gap) => onChange({ gap }), [onChange])}
       />
 
       <Select
         name='background'
         label='Fundo'
         options={BG_COLORS}
-        value={props.background}
-        onChange={props.onChangeBackground}
+        value={state.background}
+        onChange={useCallback(
+          (background) => onChange({ background }),
+          [onChange],
+        )}
       />
 
       <Select
         name='filter'
         label='Filtro'
         options={COLOR_FILTERS}
-        value={props.filter}
-        onChange={props.onChangeFilter}
+        value={state.filter}
+        onChange={useCallback((filter) => onChange({ filter }), [onChange])}
       />
     </section>
   )
@@ -124,7 +120,7 @@ export function Options(props: {
 function Select<T extends string>(props: {
   name: string
   label: string
-  options: readonly { value: T; label: string }[]
+  options: OptionList<T>
   value: T
   onChange(newValue: T): void
 }) {
