@@ -4,26 +4,15 @@ import './Options.scss'
 
 type OptionList<T extends string> = { value: T; label: string }[]
 
-const BG_COLORS: OptionList<BgColor> = [
-  { value: 'black', label: 'Preto' },
-  { value: 'blue', label: 'Azul' },
-  { value: 'white', label: 'Branco' },
-]
-
-const FLAG_ANGLES: OptionList<FlagAngle> = [
-  { value: 'horizontal', label: 'Horizontal' },
-  { value: 'diagonal', label: 'Diagonal' },
-]
-
 const FLAG_DESIGNS: OptionList<FlagDesign> = [
   { value: 'pride', label: 'Original' },
   { value: 'progress-1', label: 'Progresso 1' },
   { value: 'progress-2', label: 'Progresso 2' },
 ]
 
-const GAP_SIZES: OptionList<GapSize> = [
-  { value: '0', label: 'Não' },
-  { value: '1', label: 'Sim' },
+const FLAG_ANGLES: OptionList<FlagAngle> = [
+  { value: 'horizontal', label: 'Horizontal' },
+  { value: 'diagonal', label: 'Diagonal' },
 ]
 
 const SIDE_STYLES: OptionList<SideStyle> = [
@@ -32,6 +21,17 @@ const SIDE_STYLES: OptionList<SideStyle> = [
   { value: 'stripes-3', label: 'Listras 3' },
   { value: 'solid-bg', label: 'Fundo sólido' },
   { value: 'no-text', label: 'Sem texto' },
+]
+
+const GAP_SIZES: OptionList<GapSize> = [
+  { value: '1', label: 'Sim' },
+  { value: '0', label: 'Não' },
+]
+
+const BG_COLORS: OptionList<BgColor> = [
+  { value: 'white', label: 'Branco' },
+  { value: 'blue', label: 'Azul' },
+  { value: 'black', label: 'Preto' },
 ]
 
 export function Options(props: {
