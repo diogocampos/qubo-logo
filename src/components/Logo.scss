@@ -49,8 +49,12 @@
   }
 
   .sides {
+    --bg-color: white;
+    --text-color: var(--azul-caixa);
+
     font-size: calc(0.3 * var(--size));
     font-weight: bold;
+    color: var(--text-color);
 
     display: flex;
     justify-content: center;
@@ -80,12 +84,12 @@
     }
 
     &.stripes {
-      color: var(--azul-caixa);
-
-      > * {
-        border-block: calc(0.1 * var(--size)) solid var(--azul-caixa);
-        background: white;
+      .left,
+      .right {
+        border-block: calc(0.1 * var(--size)) solid var(--text-color);
+        background: var(--bg-color);
       }
+    }
 
       .left {
         border-block-end-color: var(--laranja-caixa);
@@ -98,10 +102,10 @@
 
     &.solid-bg,
     &.no-text {
-      color: white;
+      color: var(--bg-color);
 
       .left {
-        background: var(--azul-caixa);
+        background: var(--text-color);
       }
 
       .right {
@@ -120,6 +124,11 @@
 
   &.bg-blue {
     background: var(--azul-caixa);
+
+    .sides {
+      --bg-color: var(--azul-caixa);
+      --text-color: white;
+    }
   }
 
   &.bg-white {
