@@ -83,7 +83,9 @@
       text-align: center;
     }
 
-    &.stripes {
+    &.stripes-1,
+    &.stripes-2,
+    &.stripes-3 {
       .left,
       .right {
         border-block: calc(0.1 * var(--size)) solid var(--text-color);
@@ -91,12 +93,27 @@
       }
     }
 
+    &.stripes-1 {
       .left {
         border-block-end-color: var(--laranja-caixa);
       }
 
       .right {
         border-block-start-color: var(--laranja-caixa);
+      }
+    }
+
+    &.stripes-2 {
+      .right {
+        border-block-color: var(--laranja-caixa);
+        color: var(--laranja-caixa);
+      }
+    }
+
+    &.stripes-3 {
+      .left,
+      .right {
+        border-block-end-color: var(--laranja-caixa);
       }
     }
 

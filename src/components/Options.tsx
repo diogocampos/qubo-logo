@@ -27,7 +27,9 @@ const GAP_SIZES: OptionList<GapSize> = [
 ]
 
 const SIDE_STYLES: OptionList<SideStyle> = [
-  { value: 'stripes', label: 'Listras' },
+  { value: 'stripes-1', label: 'Listras 1' },
+  { value: 'stripes-2', label: 'Listras 2' },
+  { value: 'stripes-3', label: 'Listras 3' },
   { value: 'solid-bg', label: 'Fundo sólido' },
   { value: 'no-text', label: 'Sem texto' },
 ]

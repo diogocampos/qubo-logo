@@ -6,8 +6,8 @@ import { Options } from './Options'
 export function App() {
   const [flag, setFlag] = useState<FlagDesign>('progress-2')
   const [angle, setAngle] = useState<FlagAngle>('diagonal')
-  const [sides, setSides] = useState<SideStyle>('stripes')
-  const [gap, setGap] = useState<GapSize>('0')
+  const [sides, setSides] = useState<SideStyle>('stripes-1')
+  const [gap, setGap] = useState<GapSize>('1')
   const [background, setBackground] = useState<BgColor>('white')
 
   return (
