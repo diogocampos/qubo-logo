@@ -23,6 +23,11 @@ const SIDE_STYLES: OptionList<SideStyle> = [
   { value: 'no-text', label: 'Sem texto' },
 ]
 
+const FONT_FAMILIES: OptionList<FontFamily> = [
+  { value: 'caixa', label: 'Caixa Std' },
+  { value: 'eras', label: 'Eras Bold' },
+]
+
 const GAP_SIZES: OptionList<GapSize> = [
   { value: '1', label: 'Sim' },
   { value: '0', label: 'Não' },
@@ -43,12 +48,14 @@ export function Options(props: {
   flag: FlagDesign
   angle: FlagAngle
   sides: SideStyle
+  font: FontFamily
   gap: GapSize
   background: BgColor
   filter: ColorFilter
   onChangeFlag(flag: FlagDesign): void
   onChangeAngle(angle: FlagAngle): void
   onChangeSides(sides: SideStyle): void
+  onChangeFont(font: FontFamily): void
   onChangeGap(gap: GapSize): void
   onChangeBackground(background: BgColor): void
   onChangeFilter(filter: ColorFilter): void
@@ -77,6 +84,14 @@ export function Options(props: {
         options={SIDE_STYLES}
         value={props.sides}
         onChange={props.onChangeSides}
+      />
+
+      <Select
+        name='font'
+        label='Fonte'
+        options={FONT_FAMILIES}
+        value={props.font}
+        onChange={props.onChangeFont}
       />
 
       <Select

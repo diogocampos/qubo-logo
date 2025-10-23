@@ -6,6 +6,7 @@ export function Logo(props: {
   flag: FlagDesign
   angle: FlagAngle
   sides: SideStyle
+  font: FontFamily
   gap: GapSize
   background: BgColor
   filter: ColorFilter
@@ -24,7 +25,7 @@ export function Logo(props: {
     >
       <div className={`top flag-${props.flag} angle-${props.angle}`} />
 
-      <div className={`sides ${props.sides}`}>
+      <div className={`sides ${props.sides} ff-${props.font}`}>
         <div className='left'>
           <span className='text'>QU</span>
         </div>

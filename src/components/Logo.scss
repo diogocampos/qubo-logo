@@ -88,7 +88,7 @@
     &.stripes-3 {
       .left,
       .right {
-        border-block: calc(0.1 * var(--size)) solid var(--text-color);
+        border-block: calc(0.12 * var(--size)) solid var(--text-color);
         background: var(--bg-color);
       }
     }
@@ -132,6 +132,11 @@
 
     &.no-text .text {
       display: none;
+    }
+
+    &.ff-eras {
+      font-family: 'Eras Bold';
+      font-size: calc(0.32 * var(--size));
     }
   }
 
