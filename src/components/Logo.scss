@@ -1,4 +1,4 @@
-.logo {
+.Logo {
   --size: 30rem;
   --gap: 1rem;
 
@@ -11,6 +11,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  position: sticky;
+  inset-block-start: 0;
+  box-shadow: 0 1.5rem 1.5rem 0 white;
 
   .top {
     width: var(--size);
@@ -163,7 +167,7 @@
 }
 
 @media (min-width: 520px) and (min-height: 600px) {
-  .logo {
+  .Logo {
     --size: 50rem;
   }
 }

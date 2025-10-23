@@ -14,7 +14,7 @@ export function Logo(props: { state: LogoState }) {
 
   return (
     <section
-      className={`logo bg-${state.background} filter-${state.filter}`}
+      className={`Logo bg-${state.background} filter-${state.filter}`}
       style={style as React.CSSProperties}
     >
       <div className={`top flag-${state.flag} angle-${state.angle}`} />

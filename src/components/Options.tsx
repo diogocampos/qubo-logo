@@ -54,7 +54,7 @@ export function Options(props: {
   const { state, onChange } = props
 
   return (
-    <section className='options'>
+    <section className='Options'>
       <Select
         name='flag'
         label='Bandeira'
